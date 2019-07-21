@@ -1,37 +1,30 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-toolbar>
-
+    <v-navbar></v-navbar>
     <v-content>
-      <HelloWorld/>
+      <v-loader></v-loader>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
+import CircleLoader from '@/components/loaders/LoaderComponent.vue';
+import Toolbar from '@/components/includes/Toolbar.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    'v-loader': CircleLoader,
+    'v-navbar': Toolbar
   },
-  data () {
-    return {
-      //
+  created(){
+    if(this.isAuthenticated){
+      this.$store.dispatch('movies/getUserMovies');
+    }
+  },
+  computed:{
+    isAuthenticated(){
+      return this.$store.getters['auth/isAuthenticated'];
     }
   }
 }
