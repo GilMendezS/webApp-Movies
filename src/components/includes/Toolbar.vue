@@ -7,7 +7,7 @@
         
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-xs-only">
+        <v-toolbar-items class="">
           <v-btn flat
           v-for="item in menuItems" :key="item.title"
           :to="item.link">
