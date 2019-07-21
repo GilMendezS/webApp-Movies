@@ -22,12 +22,12 @@ export default class Interceptor {
       if (error.response) {
         if (error.response.status === 401) {          
           if (error.response.data.message) {
-            Vue.toasted.error(error.response.data.message)
+            Vue.toasted.error(error.response.data.message, {duration: 3000})
           }
           else {
             Vue.toasted.info('Your session has expired, login again :)', { duration: 3000 })
           }
-          router.push('/login');
+          router.push('/');
         }
         else if (error.response.status == 403) {
           if (error.response.data.message) {
@@ -72,7 +72,7 @@ export default class Interceptor {
 
         }
       }
-      return Promise.reject(error);
+      //return Promise.reject(error);
     })
   }
 }

@@ -89,8 +89,8 @@ export default {
             return this.user.password !== this.user.password_confirmation ? 'Passwords do not match' : true
         },
         invalidForm(){
-            return this.user.name == '' && this.user.email == '' &&
-            this.user.password == '' && this.user.confirmPassword == ''
+            return this.user.name == '' || this.user.email == '' ||
+            this.user.password == '' || this.user.password_confirmation == ''
         }
         
     },

@@ -40,6 +40,7 @@ export default {
         signUp: ({ dispatch, commit }, payload) => {
             axios.post('http://localhost:8000/api/auth/signup', payload)
                 .then(response => {
+                    router.push('/')
                     Vue.toasted.show(response.data.message, { type: 'success', icon: 'check', duration: 2000 });
                 })
         },
