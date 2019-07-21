@@ -22,7 +22,7 @@
                 <v-btn @click="onShowMovie(movie.movie_id)" flat color="orange"><i class="fa fa-eye"></i> See </v-btn>
             </div>
             <div v-else>
-                <v-btn v-if="movie.is_favorite"  :title="showTitle" flat color="blue"><i class="fa fa-check"></i> Favorite </v-btn>
+                <v-btn v-if="movie.is_favorite" @click="showMessage" :title="showTitle" flat color="blue"><i class="fa fa-check"></i> Favorite </v-btn>
                 <v-btn v-else :title="showTitle" @click="markAsFavorite(movie)" flat color="red"><i class="fa fa-heart"></i> Favorite </v-btn>
                 <v-btn @click="onShowMovie(movie.movie_id)" flat color="orange"><i class="fa fa-eye"></i> See </v-btn>
             </div>
@@ -47,6 +47,9 @@ export default {
         },
         onShowMovie(movieId){
             this.$router.push({name:'show-movie', params: {id: movieId}})
+        },
+        showMessage(){
+            this.$toasted.info('Movie already in favorites', {duration: 2000})
         }
     },
     computed: {

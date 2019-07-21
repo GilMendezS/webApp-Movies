@@ -4,13 +4,13 @@
       layout
       wrap
     >
-      <v-flex v-show="favoriteMovies" v-for="movie in favoriteMovies" :key="movie.id" xs12 sm4 class="m-4 pt-1" >
+      <v-flex v-if="favoriteMovies.length > 0" v-for="movie in favoriteMovies" :key="movie.id" xs12 sm4 class="m-4 pt-1" >
                 <v-details-movie :movie="movie" :favorites="favorites"></v-details-movie>
       </v-flex>
-      <v-flex v-show="!favoriteMovies" justify-center>
+      <v-flex v-if="favoriteMovies.length == 0" justify-center>
         <p class="display-1 text-center font-weight-bold mb-3">
           <i class="fa fa-list-alt"></i>
-          You dont have favorite movies yet...
+          Without favorite movies
         </p>
       </v-flex>
     </v-layout>
